@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Arial", sans-serif;
-  background: linear-gradient(135deg, #74ebd5, #9face6);
+  background: linear-gradient(135deg, #0b5648, #071e81);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -11,8 +11,9 @@ body {
 }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(57, 173, 90, 0.9);
   padding: 2rem;
+  margin: 0 2rem;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -20,7 +21,7 @@ body {
 
 h1 {
   margin-bottom: 1rem;
-  color: #333;
+  color: #dee39b;
 }
 
 /* Container for the letter boxes */
@@ -35,11 +36,11 @@ h1 {
   width: 40px;
   height: 60px;
   margin: 2px;
-  background-color: #fff;
+  background-color: #10673b;
   border: 2px solid #ddd;
   font-family: "Courier New", monospace;
   font-size: 2rem;
-  color: #555;
+  color: #e6dfdf;
   text-align: center;
   line-height: 60px;
   /* Set up 3D space for the flip effect */
