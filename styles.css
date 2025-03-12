@@ -1,0 +1,77 @@
+/* Reset and basic styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Container for the letter boxes */
+#topic {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+/* Each letter appears in its own box */
+.letter-box {
+  display: inline-block;
+  width: 40px;
+  height: 60px;
+  margin: 2px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  font-family: "Courier New", monospace;
+  font-size: 2rem;
+  color: #555;
+  text-align: center;
+  line-height: 60px;
+  /* Set up 3D space for the flip effect */
+  perspective: 1000px;
+}
+
+/* The flipping animation when the letter locks in */
+.letter-box.locked {
+  animation: flip 0.4s forwards;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+/* Button styling */
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff7f50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ff6347;
+}
