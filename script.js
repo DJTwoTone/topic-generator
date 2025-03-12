@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Whimsical topics
-    const funTopics = [
+    const topics = [
       "If cats ruled the world, what laws would they make?",
       "Would dragons make good pets?",
       "What's the most underrated ice cream flavor?",
