@@ -40,7 +40,8 @@ h1 {
   margin: 2px;
   background-color: #10673b;
   border: 2px solid #ddd;
-  font-family: "Courier New", monospace;
+  font-family: "Cairo", sans-serif;
+  font-weight: 800;
   font-size: 2rem;
   color: #e6dfdf;
   text-align: center;
@@ -82,5 +83,4 @@ button:hover {
 .word-box {
   display: inline-block;
   white-space: nowrap; /* Prevent word splitting */
-  margin-right: 8px; /* Add spacing between words */
 }
