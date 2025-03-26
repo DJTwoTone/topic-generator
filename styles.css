@@ -28,6 +28,8 @@ h1 {
 #topic {
   display: inline-block;
   margin-bottom: 1.5rem;
+  white-space: normal; /* Allow wrapping */
+  text-align: center;
 }
 
 /* Each letter appears in its own box */
@@ -43,7 +45,7 @@ h1 {
   color: #e6dfdf;
   text-align: center;
   line-height: 60px;
-  /* Set up 3D space for the flip effect */
+  vertical-align: top; /* Ensure alignment */
   perspective: 1000px;
 }
 
@@ -75,4 +77,10 @@ button {
 
 button:hover {
   background-color: #ff6347;
+}
+
+.word-box {
+  display: inline-block;
+  white-space: nowrap; /* Prevent word splitting */
+  margin-right: 8px; /* Add spacing between words */
 }

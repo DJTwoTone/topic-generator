@@ -72,24 +72,38 @@ document.addEventListener('DOMContentLoaded', function() {
       // Arrays to hold the individual box elements and lock status
       const boxes = [];
       const locked = [];
-  
-      // Create a box for each character in the topic
-      for (let i = 0; i < finalText.length; i++) {
-        const span = document.createElement('span');
-        span.classList.add('letter-box');
-        // For spaces, display a space and mark as locked immediately
-        if (finalText[i] === ' ') {
-          span.textContent = ' ';
-          locked[i] = true;
-          span.classList.add('locked');
-        } else {
+      
+      // Split the topic into words
+      const words = finalText.split(' ');
+
+      // Create a container for each word
+      words.forEach((word, wordIndex) => {
+        const wordContainer = document.createElement('span');
+        wordContainer.classList.add('word-box');
+
+        // Create a box for each character in the word
+        for (let i = 0; i < word.length; i++) {
+          const span = document.createElement('span');
+          span.classList.add('letter-box');
           span.textContent = randomChar();
-          locked[i] = false;
+          locked.push(false);
+          boxes.push(span);
+          wordContainer.appendChild(span);
         }
-        boxes.push(span);
-        topicElement.appendChild(span);
-      }
-  
+
+        // Add a space after the word unless it's the last word
+        if (wordIndex < words.length - 1) {
+          const space = document.createElement('span');
+          space.classList.add('letter-box', 'locked');
+          space.textContent = '\u00A0'; // Non-breaking space
+          locked.push(true);
+          boxes.push(space);
+          wordContainer.appendChild(space);
+        }
+
+        topicElement.appendChild(wordContainer);
+      });
+
       // Update all unlocked boxes with a random character every 50ms
       const updateInterval = setInterval(() => {
         boxes.forEach((box, index) => {
@@ -98,11 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       }, 50);
-  
+
       // Get indices of boxes that are not spaces to lock them in random order
       const indices = [];
-      for (let i = 0; i < finalText.length; i++) {
-        if (finalText[i] !== ' ') {
+      for (let i = 0; i < locked.length; i++) {
+        if (!locked[i]) {
           indices.push(i);
         }
       }
@@ -111,17 +125,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const j = Math.floor(Math.random() * (i + 1));
         [indices[i], indices[j]] = [indices[j], indices[i]];
       }
-  
+
       // For each index, schedule a timeout to lock in that letter at a random delay
       indices.forEach((index) => {
         const delay = 500 + Math.random() * 1000; // delay between 500ms and 1500ms
         setTimeout(() => {
           locked[index] = true;
           // Update the box with the final letter
-          boxes[index].textContent = finalText[index];
+          boxes[index].textContent = finalText[boxes.indexOf(boxes[index])];
           // Add the locked class to trigger the flip animation
           boxes[index].classList.add('locked');
-  
+
           // Clear the update interval once all letters are locked
           if (locked.every(val => val)) {
             clearInterval(updateInterval);
@@ -130,4 +144,3 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
-  
